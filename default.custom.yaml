@@ -1,18 +1,18 @@
 patch:
   # 输入法切换列表
   schema_list:
-    - schema: keke_wubi_86
-    - schema: keke_wubi_98
+#    - schema: keke_wubi_86
+#    - schema: keke_wubi_98
     - schema: keke_wubi_nc
 
   # 菜单与界面
   menu:
-    page_size: 6		#设置每页候选显示的词条数量,可设 1~10,若大于10,影响使用数字键字选择
+    page_size: 8		#设置每页候选显示的词条数量,可设 1~10,若大于10,影响使用数字键字选择
   switcher:
     hotkeys:
       - "Control+grave"
       - "Control+Shift+grave"
-      - "F4"
+      #- "F4"
       - "Control+0"
       - "Shift+Control+0"
     abbreviate_options: true
@@ -23,8 +23,8 @@ patch:
     good_old_caps_lock: true
     switch_key:
       Caps_Lock: commit_code
-      Shift_L: commit_code
-      Shift_R: commit_code
+      Shift_L: noop		#中英文切换： commit_code 开, noop 关
+      Shift_R: noop		#中英文切换： commit_code 开, noop 关
       Control_L: noop
       Control_R: noop
     inline_ascii: true
@@ -33,11 +33,11 @@ patch:
   key_binder:
     bindings:
       - when:   has_menu
-        accept: semicolon
-        send:    2 
+        #accept: semicolon
+        #send:    2 
       - when:   has_menu
-        accept: apostrophe
-        send:    3 
+        #accept: apostrophe
+        #send:    3 
       - when:   paging
         accept: minus		#上翻页键： - 号，用单词 minus ；逗号用 comma
         send:   Page_Up
@@ -81,7 +81,7 @@ patch:
         send: period
       - when: has_menu
         accept: KP_Enter
-        send: space
+        send: Return		# ← 改这里：从“选词”变为“等同于大键盘回车”，space（空格），相当给小键盘回车做了个映射，Return（回车）
         
   recognizer:
     patterns:
